@@ -10,22 +10,16 @@
 
 var today = dayjs();
 
-var today = dayjs();
+// var today = dayjs();
 $('#currentDay').text(today.format('MMM D, YYYY'));
 
-$('#d1').text()
+// $('#d1').text()
 
-var weekday = require('dayjs/plugin/weekday')
+for (let i = 0; i<6; i++) {
+    let nextDay = dayjs(today).add(i, "day");
+    console.log(nextDay.format("YYYY-MM-DD"));
+     
+}
 
-dayjs.extend(weekday)
 
-// when Sunday is the first day of the week
-dayjs().weekday(7); // next Sunday
 
-// when Monday is the first day of the week
-dayjs().weekday(7) // next Monday
-display.console.log(weekday);
-
-// when Sunday is the first day of the week
-
-dayjs().weekday(5) // next Friday (5th day after Sunday)
