@@ -140,7 +140,10 @@ function getApi(city) {
     console.log(wind);
     console.log(humidity);
 
-    for (let i=)
+    for (let i =1; i <6; i++) {
+      let followingDay = data.list[0] + 1;
+      console.log(followingDay);
+    }
     // for (let i = 0; i <= 5; i++) {
     //   let nextDay = dayjs(today).add(i, "day");
     //   console.log(nextDay.format("YYYY-MM-DD"));
