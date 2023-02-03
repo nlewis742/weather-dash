@@ -52,18 +52,19 @@ function renderSearched() {
 }
 
 function init() {
-  var storedCities = JSON.parse(localStorage.getItem("searched"));
+  var storedCities = JSON.parse(localStorage.getItem("searched"))||[];
 
   if (storedCities !== null) {
     searched = storedCities;
   }
 
-  renderSearched();
+  renderSearched(storedCities);
 }
 
 function searchedCities() {
 localStorage.setItem("searched", JSON.stringify(searched));
 }
+console.log(searched);
 
 search.addEventListener("click", function(event) {
   event.preventDefault ();
@@ -74,10 +75,11 @@ console.log(city);
     return;
   }
 
-searched.push(searched)
+searched.push(city)
 userInput.value = "";
 
-searchedCities ()
-renderSearched ()
+searchedCities ();
+renderSearched ();
 
 });
+
