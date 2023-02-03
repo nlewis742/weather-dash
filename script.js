@@ -15,6 +15,9 @@ var d5 = document.getElementById("d5");
 var recentSearches = document.getElementById("past-searches");
 var search = document.getElementById("search")
 var userInput = document.getElementById("searched-text")
+var cTemp = document.getElementById("temp");
+var cWind = document.getElementById("wind");
+var cHumidity = document.getElementById("humidity")
 
 var today = dayjs();
 var futureDay = [];
@@ -75,7 +78,6 @@ function init() {
 }
 }
 
-function searchedCities() {
 
 search.addEventListener("click", function(event) {
   event.preventDefault ();
@@ -98,14 +100,16 @@ init ();
 // renderSearched ();
 
 });
-}
+
 
 init ()
+
+
 
 var API = "6dcb91dfa0f05e0719bf5e42aee55594"
 
 function getApi(city) {
-  var geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API}`
+  var geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API}&units=imperial`
 
 
   fetch(geocodeUrl)
@@ -117,7 +121,7 @@ function getApi(city) {
   console.log(data);  
   var lat = (data[0].lat);
   var lon = (data[0].lon);
-  var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API}`;
+  var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API}&units=imperial`;
 
   fetch(requestUrl)
   .then(function (response) {
@@ -126,11 +130,30 @@ function getApi(city) {
   .then(function (data) {
     console.log(data);
     var temperature = data.list[0].main.temp;
-    var temp = document.getElementById("temp");
-    temp.textContent = temperature;
+    var wind = data.list[0].wind.speed;
+    var humidity = data.list[0].main.humidity;
+
+    cTemp.textContent = temperature;
+    cWind.textContent = wind;
+    cHumidity.textContent = humidity;
     console.log(temperature);
-    // var humidity =
-    // var wind = 
+    console.log(wind);
+    console.log(humidity);
+
+    for (let i=)
+    // for (let i = 0; i <= 5; i++) {
+    //   let nextDay = dayjs(today).add(i, "day");
+    //   console.log(nextDay.format("YYYY-MM-DD"));
+    //   futureDay.push(nextDay.format("YYYY-MM-DD"));
+    // }
+    
+    // console.log(futureDay);
+    // $("#d1").text(futureDay[1]);
+    // $("#d2").text(futureDay[2]);
+    // $("#d3").text(futureDay[3]);
+    // $("#d4").text(futureDay[4]);
+    // $("#d5").text(futureDay[5]);
+    // $("#currentDay").text(today.format("MMM D, YYYY"));
   })
   
   .catch(function(error) {
