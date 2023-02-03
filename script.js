@@ -129,20 +129,31 @@ function getApi(city) {
   })
   .then(function (data) {
     console.log(data);
-    var temperature = data.list[0].main.temp;
-    var wind = data.list[0].wind.speed;
-    var humidity = data.list[0].main.humidity;
+    // var temperature = data.list[0].main.temp;
+    // var wind = data.list[0].wind.speed;
+    // var humidity = data.list[0].main.humidity;
 
-    cTemp.textContent = temperature;
-    cWind.textContent = wind;
-    cHumidity.textContent = humidity;
-    console.log(temperature);
-    console.log(wind);
-    console.log(humidity);
+    // cTemp.textContent = temperature;
+    // cWind.textContent = wind;
+    // cHumidity.textContent = humidity;
+    // console.log(temperature);
+    // console.log(wind);
+    // console.log(humidity);
 
-    for (let i =1; i <6; i++) {
-      let followingDay = data.list[0] + 1;
+    for (let i = 0; i < 5; i++) {
+      let followingDay = data.list[i * 8];
       console.log(followingDay);
+
+      var temperature = data.list[i].main.temp;
+      var wind = data.list[i].wind.speed;
+      var humidity = data.list[i].main.humidity;
+  
+      cTemp.textContent = temperature;
+      cWind.textContent = wind;
+      cHumidity.textContent = humidity;
+      console.log(temperature);
+      console.log(wind);
+      console.log(humidity);
     }
     // for (let i = 0; i <= 5; i++) {
     //   let nextDay = dayjs(today).add(i, "day");
