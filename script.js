@@ -76,9 +76,6 @@ function init() {
 }
 
 function searchedCities() {
-localStorage.setItem("searched", JSON.stringify(searched));
-}
-console.log(searched);
 
 search.addEventListener("click", function(event) {
   event.preventDefault ();
@@ -88,18 +85,63 @@ console.log(city);
   if (city === "") {
     return;
   }
+  getApi(city)
 
 searched.push(city)
 console.log(searched);
 userInput.value = "";
 
-searchedCities ();
+localStorage.setItem("searched", JSON.stringify(searched));
+
+
+init ();
 // renderSearched ();
 
 });
+}
 
 init ()
 
+var API = "6dcb91dfa0f05e0719bf5e42aee55594"
+
+function getApi(city) {
+  var geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API}`
+
+
+  fetch(geocodeUrl)
+  .then(function (response) {
+    console.log(response);
+    return response.json();
+  })
+  .then(function (data) {
+  console.log(data);  
+  var lat = (data[0].lat);
+  var lon = (data[0].lon);
+  var requestUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API}`;
+
+  fetch(requestUrl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    var temperature = data.list[0].main.temp;
+    var temp = document.getElementById("temp");
+    temp.textContent = temperature;
+    console.log(temperature);
+    // var humidity =
+    // var wind = 
+  })
+  
+  .catch(function(error) {
+    console.log(error);
+  })
+  })
+  
+}
+
+// getApi ("Boston")
+console.log("I am code after the fetch request");
 
 // below is an example of a fetch function for an api
 // function getApi() {
