@@ -109,8 +109,7 @@ init ()
 var API = "6dcb91dfa0f05e0719bf5e42aee55594"
 
 function getApi(city) {
-  var geocodeUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API}&units=imperial`
-
+  var geocodeUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${API}&units=imperial`;
 
   fetch(geocodeUrl)
   .then(function (response) {
@@ -143,6 +142,8 @@ function getApi(city) {
     for (let i = 0; i < 5; i++) {
       let followingDay = data.list[i * 8];
       console.log(followingDay);
+      var dayDis = $('#d' + i)
+      console.log(dayDis);
 
       var temperature = data.list[i].main.temp;
       var wind = data.list[i].wind.speed;
@@ -154,6 +155,7 @@ function getApi(city) {
       console.log(temperature);
       console.log(wind);
       console.log(humidity);
+
     }
     // for (let i = 0; i <= 5; i++) {
     //   let nextDay = dayjs(today).add(i, "day");
@@ -168,6 +170,27 @@ function getApi(city) {
     // $("#d4").text(futureDay[4]);
     // $("#d5").text(futureDay[5]);
     // $("#currentDay").text(today.format("MMM D, YYYY"));
+
+    // for (let i = 9; i < 18; i++) {
+    //   var hour = $('#hour-' + i)
+    //   console.log(hour);
+    
+    //   if (i < presentHour) {
+    //     hour.addClass('past')
+    //   }
+    
+    //   if (i == presentHour) {
+    //     hour.addClass('present')
+    //   }
+    
+    //   if (i > presentHour) {
+    //     hour.addClass('future')
+    //   }
+    
+    //   var textArea = localStorage.getItem('hour-' + i)
+    //   console.log(textArea);
+    //   hour.children('textarea').val(textArea)
+    // }
   })
   
   .catch(function(error) {
