@@ -23,7 +23,7 @@ header {
 
 .today {
     border: 5px solid;
-    background-color: aqua;
+    background-color: rgb(226, 240, 240);
 }
 
 /* #col {
@@ -31,7 +31,7 @@ header {
 } */
 
 .back {
-    background-color: blueviolet;
+    background-color: rgb(100, 120, 233);
     margin: 10px;
     padding: 10px;
 }
