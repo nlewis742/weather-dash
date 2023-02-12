@@ -18,6 +18,7 @@ var userInput = document.getElementById("searched-text")
 var cTemp = document.getElementById("temp");
 var cWind = document.getElementById("wind");
 var cHumidity = document.getElementById("humidity")
+var nTemp = document.querySelector("temp")
 
 var today = dayjs();
 var futureDay = [];
