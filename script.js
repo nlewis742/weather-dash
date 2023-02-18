@@ -27,6 +27,10 @@ console.log(searched);
 
 // $('#d1').text()
 
+
+//I would rather use the below because of formatting but no longer working
+
+
 for (let i = 0; i <= 5; i++) {
   let nextDay = dayjs(today).add(i, "day");
   console.log(nextDay.format("YYYY-MM-DD"));
@@ -153,14 +157,15 @@ function getApi(city) {
       var dayDis = ('#d' + i)
       console.log(dayDis);
 
+      var date = data.list[i].dt_txt
       var temperature = data.list[i].main.temp;
       var wind = data.list[i].wind.speed;
       var humidity = data.list[i].main.humidity;
 
-      datesDiv[i].innerText+=" "+data.list[i].dt_txt;
+      datesDiv[i].innerText+=`${city}${date}`
       iconDivs[i].innerText+=" "+data.list[i].weather.icon
-      windDivs[i].innerText+=" "+data.list[i].wind.speed;
-      tempDivs[i].innerText+=" "+data.list[i].main.temp;
+      windDivs[i].innerText+=" "+data.list[i].wind.speed+"mph";
+      tempDivs[i].innerText+=" "+data.list[i].main.temp+"F";
       humidityDivs[i].innerText+=" "+data.list[i].main.humidity+"%";
 
   
