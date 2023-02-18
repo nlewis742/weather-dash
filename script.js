@@ -140,24 +140,40 @@ function getApi(city) {
     // console.log(wind);
     // console.log(humidity);
 
-    for (let i = 0; i < 5; i++) {
-      let followingDay = data.list[i * 8];
+    let datesDiv =  document.querySelectorAll(".days > p.date")
+    let iconDivs =  document.querySelectorAll(".days > p.icon")
+    let windDivs =  document.querySelectorAll(".days > p.wind")
+    let tempDivs =  document.querySelectorAll(".days > p.temp")
+    let humidityDivs =  document.querySelectorAll(".days > p.humidity")
+
+    for (let i = 0; i <= 6; i++) {
+
+       let followingDay = data.list[i * 8];
       console.log(followingDay);
-      var dayDis = $('#d' + i)
+      var dayDis = ('#d' + i)
       console.log(dayDis);
 
       var temperature = data.list[i].main.temp;
       var wind = data.list[i].wind.speed;
       var humidity = data.list[i].main.humidity;
+
+      datesDiv[i].innerText+=" "+data.list[i].dt_text;
+      iconDivs[i].innerText+=" "+data.list[i].weather.icon
+      windDivs[i].innerText+=" "+data.list[i].wind.speed;
+      tempDivs[i].innerText+=" "+data.list[i].main.temp;
+      humidityDivs[i].innerText+=" "+data.list[i].main.humidity+"%";
+
   
-      cTemp.textContent = temperature;
-      cWind.textContent = wind;
-      cHumidity.textContent = humidity;
+      // cTemp.textContent = temperature;
+      // cWind.textContent = wind;
+      // cHumidity.textContent = humidity;
       console.log(temperature);
       console.log(wind);
       console.log(humidity);
 
     }
+
+ 
     // for (let i = 0; i <= 5; i++) {
     //   let nextDay = dayjs(today).add(i, "day");
     //   console.log(nextDay.format("YYYY-MM-DD"));

@@ -19,6 +19,10 @@
 ></script>
   
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"></link>
+
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    
     <title>Weather Dash</title>
 </head>
 
@@ -35,11 +39,12 @@
       <input class="form-control" placeholder="Type to search..." id = "searched-text">
       <button id="search" class="search">Search</button>
     </div>
-    <div class="col-8 today">
-      <p id="currentDay"></p>
-      <p>Temp:<span id="temp"></span></p>
-      <p>Wind:<span id="wind"></span></p>
-      <p>Humidity:<span id="humidity"></span></p>
+    <div class="days col-8 today">
+      <p class="date"></p>
+      <p class="icon">icon</p>
+      <p class="temp">Temp: </p>
+      <p class="wind">Wind: </p>
+      <p class="humidity">Humidity: </p>
     </div>
   </div>
   <!-- <div class="col"> -->
@@ -50,40 +55,40 @@
         </ul>
     </div>
   <div class="row col-8 ">
-    <div class="col back">
-      <p id="d1"></p>
+    <div id="day_one" class="days col back">
+      <p class="date"></p>
       <p class="icon">icon</p>
       <p class="temp">Temp: </p>
       <p class="wind">Wind: </p>
       <p class="humidity">Humidity: </p>
    </div>
-   <div class="col back">
-     <p id="d2"></p>
-     <p>icon</p>
-     <p>Temp: </p>
-     <p>Wind: </p>
-     <p>Humidity: </p>
+   <div class="days col back">
+    <p class="date"></p>
+      <p class="icon">icon</p>
+      <p class="temp">Temp: </p>
+      <p class="wind">Wind: </p>
+      <p class="humidity">Humidity: </p>
    </div>
-   <div class="col back">
-     <p id="d3"></p>
-     <p>icon</p>
-     <p>Temp: </p>
-     <p>Wind: </p>
-     <p>Humidity: </p>
+   <div class="days col back">
+    <p class="date"></p>
+    <p class="icon">icon</p>
+    <p class="temp">Temp: </p>
+    <p class="wind">Wind: </p>
+    <p class="humidity">Humidity: </p>
    </div>
-   <div class="col back">
-     <p id="d4"></p>
-     <p>icon</p>
-     <p>Temp: </p>
-     <p>Wind: </p>
-     <p>Humidity: </p>
+   <div class="days col back">
+    <p class="date"></p>
+    <p class="icon">icon</p>
+    <p class="temp">Temp: </p>
+    <p class="wind">Wind: </p>
+    <p class="humidity">Humidity: </p>
    </div>
-   <div class="col back">
-     <p id="d5"></p>
-     <p>icon</p>
-     <p>Temp: </p>
-     <p>Wind: </p>
-     <p>Humidity: </p>
+   <div class="days col back">
+    <p class="date"></p>
+    <p class="icon">icon</p>
+    <p class="temp">Temp: </p>
+    <p class="wind">Wind: </p>
+    <p class="humidity">Humidity: </p>
    </div>
   </div>
   </div>
