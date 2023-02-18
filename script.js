@@ -157,7 +157,7 @@ function getApi(city) {
       var wind = data.list[i].wind.speed;
       var humidity = data.list[i].main.humidity;
 
-      datesDiv[i].innerText+=" "+data.list[i].dt_text;
+      datesDiv[i].innerText+=" "+data.list[i].dt_txt;
       iconDivs[i].innerText+=" "+data.list[i].weather.icon
       windDivs[i].innerText+=" "+data.list[i].wind.speed;
       tempDivs[i].innerText+=" "+data.list[i].main.temp;
