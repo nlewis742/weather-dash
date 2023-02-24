@@ -125,8 +125,8 @@ function currentDay(lat,lon) {
       let tempDivs = document.querySelectorAll(".dayCurrent > p.temp");
       let humidityDivs = document.querySelectorAll(".dayCurrent > p.humidity");
 
-      event.preventDefault();
       
+
       datesDiv[0].textContent = "";
       iconDivs[0].textContent = "";
       windDivs[0].textContent = "";
