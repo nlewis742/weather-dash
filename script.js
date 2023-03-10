@@ -7,11 +7,7 @@
 // THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
-var d1 = document.getElementById("d1");
-var d2 = document.getElementById("d2");
-var d3 = document.getElementById("d3");
-var d4 = document.getElementById("d4");
-var d5 = document.getElementById("d5");
+
 var recentSearches = document.getElementById("past-searches");
 var search = document.getElementById("search");
 var userInput = document.getElementById("searched-text");
@@ -25,39 +21,7 @@ var futureDay = [];
 var searched = [];
 console.log(searched);
 
-// $('#d1').text()
 
-//I would rather use the below because of formatting but no longer working
-
-// for (let i = 0; i <= 5; i++) {
-//   let nextDay = dayjs(today).add(i, "day");
-//   console.log(nextDay.format("YYYY-MM-DD"));
-//   futureDay.push(nextDay.format("YYYY-MM-DD"));
-// }
-
-// console.log(futureDay);
-// $("#d1").text(futureDay[1]);
-// $("#d2").text(futureDay[2]);
-// $("#d3").text(futureDay[3]);
-// $("#d4").text(futureDay[4]);
-// $("#d5").text(futureDay[5]);
-// $("#currentDay").text(today.format("MMM D, YYYY"));
-
-// function renderSearched() {
-//   recentSearches.innerHTML = "";
-
-//   for (var i = 0; i < searched.length; i++) {
-//     var city = searched[i];
-
-//     var li = document.createElement("li");
-//     li.textContent = city;
-//     // li.setAttribute("data-index", i)
-//     console.log(city);
-
-//     recentSearches.appendChild(li);
-
-//    }
-// }
 
 function init() {
   var storedCities = JSON.parse(localStorage.getItem("searched")) || [];
@@ -103,7 +67,7 @@ search.addEventListener("click", function (event) {
   init();
   // renderSearched ();
 });
-// /comment to push
+
 
 init();
 
@@ -152,14 +116,7 @@ function currentDay(lat,lon) {
           tempDivs[j].innerText += " " + data.main.temp + "F";
           humidityDivs[j].innerText += " " + data.main.humidity + "%";
 
-        
-          // cTemp.textContent = temperature;
-          // cWind.textContent = wind;
-          // cHumidity.textContent = humidity;
-          // console.log(temperature);
-          // console.log(wind);
-          // console.log(humidity);
-        
+ 
       
     });
   }
@@ -171,20 +128,8 @@ function forcastWeather(lat, lon) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
-      // var temperature = data.list[0].main.temp;
-      // var wind = data.list[0].wind.speed;
-      // var humidity = data.list[0].main.humidity;
 
-      // cTemp.textContent = temperature;
-      // cWind.textContent = wind;
-      // cHumidity.textContent = humidity;
-      // console.log(temperature);
-      // console.log(wind);
-      // console.log(humidity);
-  
-
-
+      
       let datesDiv = document.querySelectorAll(".days > p.date");
       let iconDivs = document.querySelectorAll(".days > p.icon > img");
       let windDivs = document.querySelectorAll(".days > p.wind");
@@ -197,30 +142,29 @@ function forcastWeather(lat, lon) {
         if (data.list[i].dt_txt.indexOf("12:00:00") > 0) {
           var dayDis = "#d" + i;
           // console.log(dayDis);
-
+          datesDiv[j].textContent = "";
+          iconDivs[j].textContent = "";
+          windDivs[j].textContent = "";
+          tempDivs[j].textContent = "";
+          humidityDivs[j].textContent = "";
+          
           var date = data.list[i].dt_txt;
           date = date.substring(0, date.indexOf(" "));
           var temperature = data.list[i].main.temp;
           var wind = data.list[i].wind.speed;
           var humidity = data.list[i].main.humidity;
-
+          
           datesDiv[j].innerText += `${date}`;
           iconDivs[j].src =
-            "https://openweathermap.org/img/w/" +
-            data.list[i].weather[0].icon +
-            ".png";
+          "https://openweathermap.org/img/w/" +
+          data.list[i].weather[0].icon +
+          ".png";
           windDivs[j].innerText += " " + data.list[i].wind.speed + "mph";
           tempDivs[j].innerText += " " + data.list[i].main.temp + "F";
           humidityDivs[j].innerText += " " + data.list[i].main.humidity + "%";
 
           j++;
-          // cTemp.textContent = temperature;
-          // cWind.textContent = wind;
-          // cHumidity.textContent = humidity;
-          // console.log(temperature);
-          // console.log(wind);
-          // console.log(humidity);
-     
+
 
         }
       }
@@ -248,28 +192,9 @@ function getApi(city) {
     });
 }
 
-// getApi ("Boston")
+
 console.log("I am code after the fetch request");
 
-// below is an example of a fetch function for an api
-// function getApi() {
-//   // replace `octocat` with anyone else's GitHub username
-//   var requestUrl = 'https://api.github.com/users/octocat/repos';
-
-//   fetch(requestUrl)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       for (var i = 0; i < data.length; i++) {
-//         var listItem = document.createElement('li');
-//         listItem.textContent = data[i].html_url;
-//         repoList.appendChild(listItem);
-//       }
-//     });
-// }
-
-// fetchButton.addEventListener('click', getApi);
 
 
 let currentDate = dayjs().format("MM/DD/YYYY");
